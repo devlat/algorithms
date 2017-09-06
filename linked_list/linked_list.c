@@ -11,12 +11,14 @@ void insert_list(list**, int);
 int main(void) {
     printf("Start...\n");
 
-    list num;
-    insert_list(&num, 3);
+    insert_list(&&num, 3);
 
     return 0;
 }
 
+/**
+ * Insert value to linked list.
+ **/
 void insert_list(list **list_imp, int x) {
     list* tempPointer;
 
@@ -27,25 +29,14 @@ void insert_list(list **list_imp, int x) {
 }
 
 /**
- * Поиск элемента в связном списке
+ * Search element in linked list.
  **/
-list *search_list(list *l, int x) {
-    if (l == NULL) return NULL;
+list *search_list(list *list_imp, int x) {
+    if (list_imp) return NULL;
 
-    if (l->item == x) {
-        return l;
+    if (list_imp->item == x) {
+        return list_imp;
     } else {
-        return search_list(l->next, x);
+        return search_list(list_imp->next, x);
     }
 }
-
-/**
- * Вставка элемента в связный список.
- **//*
-void insert_list(list **l, int x) {
-    list *p;
-    p = malloc(sizeof(list));
-    p->item = x;
-    p->next = *l;
-    *l = p;
-}*/
